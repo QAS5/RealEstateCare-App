@@ -1,0 +1,58 @@
+{
+  "assigned-inspections": [
+    {
+      "id": 1,
+      "address": "Hoofdstraat 1, Amsterdam",
+      "type": "Technische Inspectie",
+      "status": "Urgent",
+      "deadline": "2025-05-24",
+      "description": "Complete technische inspectie van het pand",
+      "assignedTo": "Jan Janssen",
+      "createdAt": "2025-05-15"
+    },
+    {
+      "id": 2,
+      "address": "Kerkweg 15, Rotterdam",
+      "type": "Renovatie Inspectie",
+      "status": "Gepland",
+      "deadline": "2025-05-28",
+      "description": "Inspectie voor geplande renovatie",
+      "assignedTo": "Jan Janssen",
+      "createdAt": "2025-05-16"
+    },
+    {
+      "id": 3,
+      "address": "Stationsplein 3, Utrecht",
+      "type": "Onderhouds Inspectie",
+      "status": "In Uitvoering",
+      "deadline": "2025-05-30",
+      "description": "Reguliere onderhoudsinspectie",
+      "assignedTo": "Jan Janssen",
+      "createdAt": "2025-05-17"
+    }
+  ],
+  "completed-inspections": [
+    {
+      "id": 4,
+      "address": "Kerkstraat 45, Utrecht",
+      "type": "Technische Inspectie",
+      "status": "Afgerond",
+      "deadline": "2025-05-15",
+      "description": "Technische inspectie van installaties",
+      "assignedTo": "Jan Janssen",
+      "createdAt": "2025-05-10",
+      "completedAt": "2025-05-15"
+    },
+    {
+      "id": 5,
+      "address": "Stationsweg 12, Den Haag",
+      "type": "Renovatie Inspectie",
+      "status": "Afgerond",
+      "deadline": "2025-05-10",
+      "description": "Inspectie na renovatie werkzaamheden",
+      "assignedTo": "Jan Janssen",
+      "createdAt": "2025-05-05",
+      "completedAt": "2025-05-10"
+    }
+  ]
+}
