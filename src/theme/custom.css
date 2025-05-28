@@ -1,0 +1,122 @@
+:root {
+  --rec-primary: rgba(0, 170, 162, 1);
+  --rec-secondary: rgba(71, 94, 108, 1);
+  --rec-secondary-dark: rgba(20, 27, 31, 1);
+  --rec-text: rgba(41, 52, 57, 1);  --rec-background: #ffffff;
+
+  --ion-color-rec-primary: var(--rec-primary);
+  --ion-color-rec-primary-rgb: 0, 170, 162;
+  --ion-color-rec-primary-contrast: #ffffff;
+  --ion-color-rec-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-rec-primary-shade: rgb(0, 150, 143);
+  --ion-color-rec-primary-tint: rgb(26, 179, 172);
+
+  --ion-color-rec-secondary: var(--rec-secondary);
+  --ion-color-rec-secondary-rgb: 71, 94, 108;
+  --ion-color-rec-secondary-contrast: #ffffff;
+  --ion-color-rec-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-rec-secondary-shade: rgb(63, 83, 95);
+  --ion-color-rec-secondary-tint: rgb(89, 110, 124);
+}
+
+.ion-color-rec-primary {
+  --ion-color-base: var(--ion-color-rec-primary);
+  --ion-color-base-rgb: var(--ion-color-rec-primary-rgb);
+  --ion-color-contrast: var(--ion-color-rec-primary-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-rec-primary-contrast-rgb);
+  --ion-color-shade: var(--ion-color-rec-primary-shade);
+  --ion-color-tint: var(--ion-color-rec-primary-tint);
+}
+
+.ion-color-rec-secondary {
+  --ion-color-base: var(--ion-color-rec-secondary);
+  --ion-color-base-rgb: var(--ion-color-rec-secondary-rgb);
+  --ion-color-contrast: var(--ion-color-rec-secondary-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-rec-secondary-contrast-rgb);
+  --ion-color-shade: var(--ion-color-rec-secondary-shade);
+  --ion-color-tint: var(--ion-color-rec-secondary-tint);
+}
+
+.rec-text-heading {
+  color: var(--rec-text);
+  font-weight: 600;
+}
+
+.rec-text-body {
+  color: var(--rec-text);
+  line-height: 1.5;
+}
+
+.rec-card {
+  background: var(--rec-background);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.rec-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+.rec-badge-error {
+  background: #ef4444;
+  color: white;
+}
+
+.rec-badge-info {
+  background: var(--rec-primary);
+  color: white;
+}
+
+.rec-badge-secondary {
+  background: var(--rec-secondary);
+  color: white;
+}
+
+ion-back-button {
+  --color: white !important;
+  --icon-color: white !important;
+  --min-width: 44px;
+  --min-height: 44px;
+}
+
+ion-toolbar[color="rec-primary"] ion-back-button {
+  --color: white !important;
+  --icon-color: white !important;
+}
+
+ion-back-button .button-native {
+  color: white !important;
+}
+
+ion-back-button .back-button-icon {
+  color: white !important;
+}
+
+ion-back-button .back-button-text {
+  color: white !important;
+}
+
+body.dark {
+  --rec-background: #1e1e1e;
+  --rec-text: #ffffff;
+  --ion-background-color: #000000;
+  --ion-text-color: #ffffff;
+  --ion-card-background: #1e1e1e;
+}
+
+body.dark .rec-card {
+  background: var(--rec-background);
+  color: var(--rec-text);
+}
+
+body.dark .rec-text-heading {
+  color: var(--rec-text);
+}
+
+body.dark .rec-text-body {
+  color: var(--rec-text);
+}
