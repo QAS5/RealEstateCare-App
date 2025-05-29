@@ -69,4 +69,4 @@ De app haalt data van: https://my-json-server.typicode.com/QAS5/RealEstateCare
 
 ---
 
-*Gemaakt voor LOI schoolopdracht - Mei 2025*
+*Gemaakt voor schoolopdracht - Mei 2025*
