@@ -37,7 +37,7 @@
   </ion-page>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import {
@@ -58,7 +58,7 @@ const username = ref('');
 const password = ref('');
 const isLoading = ref(false);
 
-const displayMessage = async (text: string, type: string = 'danger') => {
+const displayMessage = async (text, type = 'danger') => {
   const toast = await toastController.create({
     message: text,
     duration: 2500,

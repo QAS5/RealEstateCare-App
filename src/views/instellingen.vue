@@ -13,9 +13,11 @@
       </div>
       
       <div class="rec-card">
-        <div class="user-profile">
-          <div class="avatar-section">
-            <img :src="user?.avatar" alt="Profile" class="avatar" />
+        <div class="user-profile">          <div class="avatar-section">
+            <img :src="user?.avatar || '/assets/images/default-avatar.png'" 
+                 alt="Profile" 
+                 class="avatar" 
+                 @error="handleImageError" />
             <ion-button fill="clear" size="small" class="change-avatar" @click="changeAvatar">
               <ion-icon :icon="cameraOutline"></ion-icon>
             </ion-button>
@@ -45,7 +47,7 @@
         <h2 class="rec-text-heading">Weergave</h2>        <ion-list>
           <ion-item>
             <ion-label>Donkere Modus</ion-label>
-            <ion-toggle :checked="isDark" @ionChange="toggleDarkMode"></ion-toggle>
+            <ion-toggle :checked="isDark" @ionChange="toggle"></ion-toggle>
           </ion-item>
         </ion-list>
       </div>
@@ -111,7 +113,7 @@
   </ion-page>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { 
@@ -141,7 +143,7 @@ import { useSettings } from '@/composables/useSettings';
 import { useAuth } from '@/composables/useAuth';
 
 const router = useRouter();
-const { isDark, toggleDarkMode } = useDarkMode();
+const { isDark, toggle } = useDarkMode();
 const { settings, toggleSetting, checkForUpdates, showPrivacyPolicy, showTerms } = useSettings();
 const { user, updateProfile, logout } = useAuth();
 
@@ -149,12 +151,16 @@ const name = ref(user?.value?.name || '');
 const email = ref(user?.value?.email || '');
 const username = ref(user?.value?.username || '');
 
-const saveProfile = (field: string, value: string) => {
+const saveProfile = (field, value) => {
   updateProfile({ [field]: value });
 };
 
 const changeAvatar = () => {
   updateProfile({ avatar: '/assets/images/default-avatar.png' });
+};
+
+const handleImageError = (event) => {
+  event.target.src = '/assets/images/default-avatar.png';
 };
 
 const handleLogout = async () => {

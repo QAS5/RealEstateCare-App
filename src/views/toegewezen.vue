@@ -314,13 +314,13 @@
   </ion-page>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { ref, computed, onMounted } from 'vue';
-import { 
-  IonContent, 
-  IonHeader, 
-  IonPage, 
-  IonTitle, 
+import {
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
   IonToolbar,
   IonButtons,
   IonBackButton,
@@ -346,12 +346,11 @@ import {
 } from '@ionic/vue';
 import { arrowForward, camera, document } from 'ionicons/icons';
 import { Camera, CameraResultType } from '@capacitor/camera';
-import type { Inspection, InspectionFormData, InspectionSection } from '@/types/inspection';
-import { InspectionStatus } from '@/types/inspection';
-import { useInspectionStore } from '@/stores/inspectionStore';
+import { InspectionStatus } from '@/types/inspection.js';
+import { useInspectionStore } from '@/stores/inspectionStore.js';
 
 const searchQuery = ref('');
-const currentInspection = ref<Inspection | null>(null);
+const currentInspection = ref(null);
 
 const inspectionStore = useInspectionStore();
 onMounted(async () => {
@@ -359,7 +358,7 @@ onMounted(async () => {
   await inspectionStore.loadAssignedInspections();
 });
 
-const formData = ref<InspectionFormData>({
+const formData = ref({
   damage: {
     location: '',
     isNew: 'no',
@@ -402,7 +401,7 @@ const filteredInspections = computed(() => {
   );
 });
 
-const getStatusClass = (status: string) => {
+const getStatusClass = (status) => {
   switch (status.toLowerCase()) {
     case 'urgent':
       return 'rec-badge-error';
@@ -413,11 +412,11 @@ const getStatusClass = (status: string) => {
   }
 };
 
-const openInspection = (inspection: Inspection) => {
+const openInspection = (inspection) => {
   currentInspection.value = inspection;
 };
 
-const takePicture = async (section: keyof InspectionFormData) => {
+const takePicture = async (section) => {
   try {    const image = await Camera.getPhoto({
       quality: 90,
       allowEditing: false,
@@ -486,7 +485,7 @@ const saveInspection = async () => {
     return;
   }
   try {
-    const updatedInspection: Inspection = {
+    const updatedInspection = {
       ...currentInspection.value,
       formData: { ...formData.value },
       status: InspectionStatus.COMPLETED,

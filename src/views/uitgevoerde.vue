@@ -310,7 +310,7 @@
   </ion-page>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { ref, computed, onMounted } from 'vue';
 import { 
   IonContent, 
@@ -341,16 +341,15 @@ import {
   toastController
 } from '@ionic/vue';
 import { create } from 'ionicons/icons';
-import type { Inspection, InspectionFormData } from '@/types/inspection';
-import { InspectionStatus } from '@/types/inspection';
-import { useInspectionStore } from '@/stores/inspectionStore';
+import { InspectionStatus } from '@/types/inspection.js';
+import { useInspectionStore } from '@/stores/inspectionStore.js';
 
 const searchQuery = ref('');
-const currentInspection = ref<Inspection | null>(null);
+const currentInspection = ref(null);
 
 const inspectionStore = useInspectionStore();
 
-const formData = ref<any>(null);
+const formData = ref(null);
 
 onMounted(async () => {  try {
     await inspectionStore.loadCompletedInspections();
@@ -367,7 +366,7 @@ const filteredInspections = computed(() => {
   );
 });
 
-const formatDate = (dateString: string | undefined) => {
+const formatDate = (dateString) => {
   if (!dateString) return '';
   return new Date(dateString).toLocaleDateString('nl-NL', {
     day: 'numeric',
@@ -376,7 +375,7 @@ const formatDate = (dateString: string | undefined) => {
   });
 };
 
-const showInspection = (inspection: Inspection) => {
+const showInspection = (inspection) => {
   currentInspection.value = inspection;
   if (inspection.formData) {
     formData.value = JSON.parse(JSON.stringify(inspection.formData));

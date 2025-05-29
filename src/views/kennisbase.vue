@@ -36,7 +36,7 @@
   </ion-page>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { ref, computed } from 'vue';
 import { 
   IonContent, 
@@ -57,17 +57,9 @@ import {
 } from '@ionic/vue';
 import { document, documentText, book, library } from 'ionicons/icons';
 
-interface Document {
-  id: number;
-  title: string;
-  description: string;
-  category: 'norms' | 'procedures' | 'manuals' | 'references';
-  fileName: string;
-}
-
 const searchQuery = ref('');
 
-const docsList = ref<Document[]>([
+const docsList = ref([
   {
     id: 1,
     title: 'Testprocedure Technische Installaties',
@@ -107,7 +99,7 @@ const filteredDocuments = computed(() => {
   );
 });
 
-const viewDocument = async (doc: Document) => {
+const viewDocument = async (doc) => {
   try {
     window.open(`/assets/docs/${doc.fileName}`, '_blank');
   } catch (error) {
