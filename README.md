@@ -16,7 +16,7 @@ De app is bedoeld voor inspecteurs die huizen en gebouwen moeten controleren. Ze
 
 Ik heb Vue.js gebruikt omdat dat makkelijker leek dan React. En Ionic voor de mobiele interface want dat ziet er professioneel uit.
 
-Voor de data gebruik ik een online API (my-json-server.typicode.com) die ik op internet vond. Als die niet werkt heeft de app ook backup data.
+Voor de data gebruik ik een online API (my-json-server.typicode.com) uit de instructies. Als die niet werkt heeft de app ook backup data.
 
 **Wat ik heb gebruikt:**
 - Vue.js 3 (met Composition API)
@@ -58,18 +58,7 @@ Je kunt inloggen met:
 
 De app haalt data van: https://my-json-server.typicode.com/QAS5/RealEstateCare
 
-## Voor Docenten - Hoe de app te runnen
-
-**GitHub Repository:** https://github.com/QAS5/RealEstateCare-App.git
-
-**Lokaal runnen:**
-```bash
-git clone https://github.com/QAS5/RealEstateCare-App.git
-cd RealEstateCare-App
-npm install
-npm run serve
-```
-Dan naar http://localhost:8080
+## Voor Docenten 
 
 **Live demo op Netlify:** https://gentle-sundae-90ff33.netlify.app
 **Direct naar login:** https://gentle-sundae-90ff33.netlify.app/login
