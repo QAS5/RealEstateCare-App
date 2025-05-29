@@ -71,7 +71,8 @@ npm run serve
 ```
 Dan naar http://localhost:8080
 
-**Live demo op Netlify:** [URL wordt automatisch gegenereerd na deployment]
+**Live demo op Netlify:** https://gentle-sundae-90ff33.netlify.app
+**Direct naar login:** https://gentle-sundae-90ff33.netlify.app/login
 
 **Test account:**
 - Email: admin@example.com
