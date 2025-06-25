@@ -7,11 +7,11 @@
         </div>
         
         <div class="form-container">
-          <form @submit.prevent="handleLogin">
+          <form @submit.prevent="handleLogin" v-if="!show2FA">
             <div class="input-group">
               <ion-item lines="none" class="login-input">
-                <ion-label position="floating">Gebruikersnaam</ion-label>
-                <ion-input v-model="username" type="text" required></ion-input>
+                <ion-label position="floating">E-mail adres</ion-label>
+                <ion-input v-model="username" type="email" required></ion-input>
               </ion-item>
             </div>
 
@@ -29,6 +29,42 @@
               :disabled="isLoading">
               <span v-if="!isLoading">Inloggen</span>
               <span v-else>Aanmelden...</span>
+            </ion-button>
+          </form>
+
+          <!-- 2FA Form -->
+          <form @submit.prevent="handle2FA" v-if="show2FA">
+            <div class="twofa-header">
+              <h2>Twee-factor authenticatie</h2>
+              <p>Voer de 6-cijferige verificatiecode in</p>
+            </div>
+            
+            <div class="input-group">
+              <ion-item lines="none" class="login-input">
+                <ion-label position="floating">Verificatiecode</ion-label>
+                <ion-input 
+                  v-model="twoFACode" 
+                  type="text" 
+                  maxlength="6"
+                  required></ion-input>
+              </ion-item>
+            </div>
+
+            <ion-button 
+              expand="block" 
+              type="submit" 
+              class="login-btn" 
+              :disabled="isLoading">
+              <span v-if="!isLoading">Verifiëren</span>
+              <span v-else>Verifiëren...</span>
+            </ion-button>
+
+            <ion-button 
+              expand="block" 
+              fill="clear" 
+              class="back-btn"
+              @click="goBack">
+              Terug naar inloggen
             </ion-button>
           </form>
         </div>
@@ -52,11 +88,13 @@ import {
 import { useAuth } from '@/composables/useAuth';
 
 const router = useRouter();
-const { login } = useAuth();
+const { login, verify2FA } = useAuth();
 
 const username = ref('');
 const password = ref('');
+const twoFACode = ref('');
 const isLoading = ref(false);
+const show2FA = ref(false);
 
 const displayMessage = async (text, type = 'danger') => {
   const toast = await toastController.create({
@@ -78,13 +116,41 @@ const handleLogin = async () => {
 
   isLoading.value = true;
   
-  try {    await login(username.value, password.value);
-    router.push('/home');
+  try {
+    await login(username.value, password.value);
+    displayMessage('Inloggegevens correct. Voer uw 2FA code in.', 'success');
+    show2FA.value = true;
   } catch (err) {
-    displayMessage('Inloggen mislukt. Controleer uw gegevens.');
+    displayMessage(err.message || 'Inloggen mislukt. Controleer uw gegevens.');
   } finally {
     isLoading.value = false;
   }
+};
+
+const handle2FA = async () => {
+  if (isLoading.value) return;
+  
+  if (!twoFACode.value.trim()) {
+    displayMessage('Voer de 2FA code in', 'warning');
+    return;
+  }
+
+  isLoading.value = true;
+  
+  try {
+    await verify2FA(twoFACode.value);
+    displayMessage('Succesvol ingelogd!', 'success');
+    router.push('/home');
+  } catch (err) {
+    displayMessage(err.message || '2FA verificatie mislukt.');
+  } finally {
+    isLoading.value = false;
+  }
+};
+
+const goBack = () => {
+  show2FA.value = false;
+  twoFACode.value = '';
 };
 </script>
 
@@ -135,6 +201,28 @@ const handleLogin = async () => {
   --border-radius: 8px;
   height: 48px;
   font-weight: 500;
+}
+
+.back-btn {
+  margin-top: 1rem;
+  --color: var(--ion-color-medium);
+}
+
+.twofa-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.twofa-header h2 {
+  color: var(--ion-color-primary);
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+}
+
+.twofa-header p {
+  color: var(--ion-color-medium);
+  font-size: 0.9rem;
+  margin: 0;
 }
 
 @media (max-width: 480px) {

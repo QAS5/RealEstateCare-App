@@ -19,16 +19,28 @@ export function useAuth() {  const loadUser = () => {
       throw new Error('Voer gebruikersnaam en wachtwoord in')
     }
 
+    // Only allow admin@example.com with password 'password'
+    if (username !== 'admin@example.com' || password !== 'password') {
+      throw new Error('Ongeldige inloggegevens')
+    }
+
     const userData = {
-      username,
-      email: `${username}@realestate-care.nl`,
-      name: username,
+      username: 'admin@example.com',
+      email: 'admin@example.com',
+      name: 'Administrator',
       avatar: '/assets/images/default-avatar.png'
     }
 
     user.value = userData
     isAuthenticated.value = true
     localStorage.setItem('user', JSON.stringify(userData))
+  }
+
+  const verify2FA = async (code) => {
+    if (code !== '123456') {
+      throw new Error('Ongeldige 2FA code')
+    }
+    return true
   }
 
   const updateProfile = (updates) => {
@@ -50,6 +62,7 @@ export function useAuth() {  const loadUser = () => {
     isAuthenticated,
     login,
     logout,
-    updateProfile
+    updateProfile,
+    verify2FA
   }
 }

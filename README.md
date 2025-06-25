@@ -60,8 +60,9 @@ De app haalt data van: https://my-json-server.typicode.com/QAS5/RealEstateCare
 
 ## Voor Docenten 
 
-**Live demo op Netlify:** https://gentle-sundae-90ff33.netlify.app
-**Direct naar login:** https://gentle-sundae-90ff33.netlify.app/login
+**GitHub Repository:** https://github.com/QAS5/RealEstateCare-App.git
+
+**Live demo op Netlify:** https://gentle-sundae-90ff33.netlify.app/
 
 **Test account:**
 - Email: admin@example.com

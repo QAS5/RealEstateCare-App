@@ -33,6 +33,8 @@
         </ion-item-group>
       </div>
     </ion-content>
+    
+    <AppFooter />
   </ion-page>
 </template>
 
@@ -56,6 +58,7 @@ import {
   toastController
 } from '@ionic/vue';
 import { document, documentText, book, library } from 'ionicons/icons';
+import AppFooter from '@/components/AppFooter.vue';
 
 const searchQuery = ref('');
 

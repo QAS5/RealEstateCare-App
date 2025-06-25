@@ -307,6 +307,8 @@
         </ion-list>
       </div>
     </ion-content>
+    
+    <AppFooter />
   </ion-page>
 </template>
 
@@ -343,6 +345,7 @@ import {
 import { create } from 'ionicons/icons';
 import { InspectionStatus } from '@/types/inspection.js';
 import { useInspectionStore } from '@/stores/inspectionStore.js';
+import AppFooter from '@/components/AppFooter.vue';
 
 const searchQuery = ref('');
 const currentInspection = ref(null);

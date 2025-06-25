@@ -6,8 +6,15 @@
           <img src="/assets/images/logo.png" alt="REC Logo" class="header-logo" />
         </div>
       </ion-toolbar>
-    </ion-header>    <ion-content :fullscreen="true" class="ion-no-padding">
+    </ion-header>
+
+    <ion-content :fullscreen="true" class="ion-no-padding">
       <main>
+        <div class="welcome-section">
+          <h1>Welkom bij RealEstateCare</h1>
+          <p>Kies een optie om te beginnen</p>
+        </div>
+        
         <div class="main-grid">
           <div class="nav-card" @click="goToToegewezen()">
             <img alt="Toegewezen Inspecties" src="/assets/images/toegewezen.jpg" />
@@ -43,12 +50,15 @@
         </div>
       </main>
     </ion-content>
+    
+    <AppFooter />
   </ion-page>
 </template>
 
 <script setup>
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
 import { useRouter } from 'vue-router';
+import AppFooter from '@/components/AppFooter.vue';
 
 const router = useRouter();
 
@@ -83,16 +93,38 @@ function goToInstellingen() {
   margin: 0;
 }
 
+.welcome-section {
+  text-align: center;
+  padding: 80px 16px 0px 16px;
+  margin-bottom: 0px;
+}
+
+.welcome-section h1 {
+  color: #00aaa2;
+  margin-bottom: 8px;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.welcome-section p {
+  color: #666;
+  font-size: 1rem;
+  margin: 0;
+}
+
 .main-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 30px;
-  padding: 30px;
-  height: calc(100vh - 80px); 
+  gap: 20px;
+  padding: 20px;
+  height: calc(70vh - 60px); 
   width: 100%;
   box-sizing: border-box;
-  margin-top: calc(5vh + 10px);
+  margin-top: 10px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .nav-card {
@@ -113,31 +145,49 @@ function goToInstellingen() {
 
 .nav-card img {
   width: 100%;
-  height: 280px;
+  height: 180px;
   object-fit: cover;
 }
 
 .card-content {
-  padding: 15px;
+  padding: 12px;
   background: rgba(255, 255, 255, 0.9);
 }
 
 .card-content h2 {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #121212;
   font-weight: bold;
 }
+
 .card-content p {
-  margin: 8px 0 0;
-  font-size: 0.9rem;
+  margin: 6px 0 0;
+  font-size: 0.8rem;
   color: #666;
 }
 
 @media (max-width: 768px) {
   .main-grid {
-    gap: 8px;
-    padding: 8px;
+    gap: 12px;
+    padding: 15px;
+    height: calc(60vh - 50px);
+  }
+  
+  .nav-card img {
+    height: 140px;
+  }
+  
+  .card-content {
+    padding: 10px;
+  }
+  
+  .card-content h2 {
+    font-size: 0.9rem;
+  }
+  
+  .card-content p {
+    font-size: 0.75rem;
   }
 }
 </style>

@@ -311,6 +311,8 @@
         </ion-list>
       </div>
     </ion-content>
+    
+    <AppFooter />
   </ion-page>
 </template>
 
@@ -346,6 +348,7 @@ import {
 } from '@ionic/vue';
 import { arrowForward, camera, document } from 'ionicons/icons';
 import { Camera, CameraResultType } from '@capacitor/camera';
+import AppFooter from '@/components/AppFooter.vue';
 import { InspectionStatus } from '@/types/inspection.js';
 import { useInspectionStore } from '@/stores/inspectionStore.js';
 

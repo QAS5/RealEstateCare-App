@@ -110,6 +110,8 @@
         </ion-list>
       </div>
     </ion-content>
+    
+    <AppFooter />
   </ion-page>
 </template>
 
@@ -141,6 +143,7 @@ import {
 import { useDarkMode } from '@/composables/useDarkMode';
 import { useSettings } from '@/composables/useSettings';
 import { useAuth } from '@/composables/useAuth';
+import AppFooter from '@/components/AppFooter.vue';
 
 const router = useRouter();
 const { isDark, toggle } = useDarkMode();
